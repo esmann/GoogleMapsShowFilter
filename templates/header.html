@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<!-- saved from url=(0014)about:internet -->
+<title>GSAK Google Map</title>
+
+<!-----external references----->
+
+<script src="http://maps.google.com/maps?file=api&amp;v=2" type="text/javascript"></script>
+
+<!-----With API key for http://localhost/----->
+<!-----<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcgt7h3CsXAU-Pcy9jDXNrRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQ_Twxpil8Xru91kHRd8o4vcVhC-w" type="text/javascript"></script>----->
+
+<style type="text/css">
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: Verdana;
+      font-size: 7pt;
+    }
+
+    body {
+      background-color: white;
+      margin: 0;
+    }
+
+    #map {
+      background-color: #e5e3df;
+      height: 100%;
+    }
+    
+    #printDiv{
+      position: absolute;
+      top: 7px;
+      left: 80px;
+      width: 55px;
+      border: 1px solid black;
+      background: #6789CC;
+      display:block;
+      padding: 0px 1px;
+    }
+     
+    .print{
+      color: #FFFFFF;
+      font-size: 10pt;
+      font-weight: bold;
+      height: 17px;
+      cursor: pointer;
+      text-align: center;
+  	  z-index: 5;
+     }
+
+</style>
+<style type="text/css" media="print">
+	#printDiv { display: none; }
+</style>
+</head>
+
+<body onunload="GUnload()">
+
+<!-----map container----->
+<div id="map"></div>
+
+<script type="text/javascript">
+
+<!-----map variables----->
+
+var map = new GMap2(document.getElementById("map"));
+   map.addControl(new GScaleControl());
+// map.addControl(new GLargeMapControl());
+   map.addControl(new GLargeMapControl3D());
+// map.addControl(new GMapTypeControl(true));
+   map.addControl(new GHierarchicalMapTypeControl(true));
+   map.enableContinuousZoom();
+   map.enableDoubleClickZoom();
+
+//Don't add Earth if we are using IE6
+if (window.XMLHttpRequest) {
+// IE 7, mozilla, safari, opera 9
+   map.addMapType(G_SATELLITE_3D_MAP);
+} else {
+// IE6, older browsers
+}
+
+<!-----Add map types----->
+map.addMapType(G_PHYSICAL_MAP);
+//map.addMapType( WMS_TOPO_MAP );
+//map.addMapType( NRCAN_TOPO_TILES );
+//map.addMapType(MYTOPO_MAP);
+//map.addMapType(OPEN_MAP);
+//map.addMapType(OCM_MAP);
+
+<!-----minimap inset----->
+
+//   var ovSize=new GSize(200, 150)
+//   var ovMap=new GOverviewMapControl(ovSize);
+//   map.addControl(ovMap);
+//   var mini=ovMap.getOverviewMap();
+//   ovMap.hide();    //hide by default
+    
+   
+   map.setCenter(new GLatLng(my_center_lat,my_center_lon),my_zoom);
+   map.enableScrollWheelZoom();
+   
+      
+<!-----icon references----->
+
+var ringIcon = new GIcon();
+ringIcon.iconSize = new GSize(31, 20);
+ringIcon.iconAnchor = new GPoint(15, 11);
+ringIcon.image = "http://gsak.net/google/cacheicons/ring.png";
+	
+var exclamationIcon = new GIcon();
+exclamationIcon.iconSize = new GSize(16, 16);
+exclamationIcon.iconAnchor = new GPoint(12, 20);
+exclamationIcon.image = "http://gsak.net/stats/maps/cacheicons/exclamation.png";
+
+var baseIcon = new GIcon();
+baseIcon.shadow = "http://gsak.net/google/cacheicons/shadowmy_icon.png";
+my_baseicon
+     
+var found_icon = new GIcon(baseIcon);
+   found_icon.image = "http://gsak.net/stats/maps/cacheicons/foundmy_icon.png";
+
+var mu_icon = new GIcon(baseIcon);
+   mu_icon.image = "http://gsak.net/google/cacheicons/mumy_icon.png";
+
+var le_icon = new GIcon(baseIcon);
+   le_icon.image = "http://gsak.net/google/cacheicons/lemy_icon.png";
+
+var tr_icon = new GIcon(baseIcon);
+   tr_icon.image = "http://gsak.net/google/cacheicons/trmy_icon.png";
+
+var un_icon = new GIcon(baseIcon);
+   un_icon.image = "http://gsak.net/google/cacheicons/unmy_icon.png";
+
+var vi_icon = new GIcon(baseIcon);
+   vi_icon.image = "http://gsak.net/google/cacheicons/vimy_icon.png";
+
+var ev_icon = new GIcon(baseIcon);
+   ev_icon.image = "http://gsak.net/google/cacheicons/evmy_icon.png";
+
+var ea_icon = new GIcon(baseIcon);
+   ea_icon.image = "http://gsak.net/google/cacheicons/eamy_icon.png";
+
+var we_icon = new GIcon(baseIcon);
+   we_icon.image = "http://gsak.net/google/cacheicons/wemy_icon.png";
+
+var lo_icon = new GIcon(baseIcon);
+   lo_icon.image = "http://gsak.net/google/cacheicons/lomy_icon.png";
+   
+var ci_icon = new GIcon(baseIcon);
+   ci_icon.image = "http://gsak.net/google/cacheicons/cimy_icon.png";
+   
+var be_icon = new GIcon(baseIcon);
+   be_icon.image = "http://gsak.net/google/cacheicons/bemy_icon.png";
+
+var ex_icon = new GIcon(baseIcon);
+   ex_icon.image = "http://gsak.net/google/cacheicons/exmy_icon.png";
+   
+var wh_icon = new GIcon(baseIcon);
+   wh_icon.image = "http://gsak.net/google/cacheicons/whmy_icon.png";
+   
+var ap_icon = new GIcon(baseIcon);
+   ap_icon.image = "http://gsak.net/google/cacheicons/apmy_icon.png";
+   
+var me_icon = new GIcon(baseIcon);
+   me_icon.image = "http://gsak.net/google/cacheicons/memy_icon.png";
+   
+var wm_icon = new GIcon(baseIcon);
+   wm_icon.image = "http://gsak.net/google/cacheicons/wmmy_icon.png";
+   
+var ot_icon = new GIcon(baseIcon);
+   ot_icon.image = "http://gsak.net/google/cacheicons/othermy_icon.png";
+   
+var childicon = new GIcon(baseIcon);
+	childicon.image = "http://gsak.net/google/cacheicons/waypointmy_icon.png";
+	
+var childfoundicon = new GIcon(baseIcon);
+	childfoundicon.image = "http://gsak.net/stats/maps/cacheicons/waypointfoundmy_icon.png";
+	
+	
+var correctedicon = new GIcon();
+	correctedicon.image = "http://gsak.net/google/cacheicons/traffic_cone.png";
+	correctedicon.iconSize = new GSize(16, 16);
+	correctedicon.iconAnchor = new GPoint(8, 16);
+  
+

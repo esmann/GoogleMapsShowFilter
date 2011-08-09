@@ -1,0 +1,44 @@
+# MacDescription = Google Maps Filter Caches Split-Screen macro
+# MacFileName = HTML_Google Maps Filter.gsk
+# MacAuthor = esmann
+# MacVersion=0.1
+
+#***************************************
+# HTMLName=Map Filter
+# SplitScreen=Yes
+# Export=No
+# Offline=No
+#***************************************
+msgok msg="hestest";
+
+Goto Position=Top
+while not ($_eol)
+	#do waypoint stuff
+	$htmlBody = $htmlBody + "var marker$d_CacheID = new GMarker(new GPoint(" + $d_Longitude + ", " + $d_Latitude + "));"
+	$htmlBody = $htmlBody + "map.addOverlay(marker$d_CacheId);"
+	Goto Position=Next
+endwhile
+
+
+$path = Sysinfo("MacroPath")
+$filename = $path + "\test.html"
+$htmlHeader = GetFile($path + "\filter\header.html")
+$html = $htmlHeader + $htmlBody + $htmlFooter
+
+
+$html = replace("my_zoom","13",$html,true)
+$html = replace("my_center_lat",$d_Latitude,$html,true)
+$html = replace("my_center_lon",$d_Longitude,$html,true)
+$html = replace("my_icon","",$html,true)
+$html = replace("my_baseicon","",$html,true)
+
+$result = PutFile($filename, $html)
+$_HTML = $html
+
+<data> VarName=$htmlBody
+<enddata>
+
+<data> VarName=$htmlFooter
+   </script>
+   </body></html>
+<enddata>
