@@ -1,5 +1,5 @@
 # MacDescription = Google Maps Filter Caches Split-Screen macro
-# MacFileName = HTML_Google Maps Filter.gsk
+# MacFileName = GoogleMapsShowFilter.gsk
 # MacAuthor = esmann
 # MacVersion=0.1
 
@@ -9,8 +9,6 @@
 # Export=No
 # Offline=No
 #***************************************
-msgok msg="hestest";
-
 Goto Position=Top
 while not ($_eol)
 	#do waypoint stuff
