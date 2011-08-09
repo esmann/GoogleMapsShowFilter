@@ -21,8 +21,7 @@ endwhile
 
 
 $path = Sysinfo("MacroPath")
-$filename = $path + "\test.html"
-$htmlHeader = GetFile($path + "\filter\header.html")
+$htmlHeader = GetFile($path + "\templates\header.html")
 $html = $htmlHeader + $htmlBody + $htmlFooter
 
 
@@ -32,7 +31,6 @@ $html = replace("my_center_lon",$d_Longitude,$html,true)
 $html = replace("my_icon","",$html,true)
 $html = replace("my_baseicon","",$html,true)
 
-$result = PutFile($filename, $html)
 $_HTML = $html
 
 <data> VarName=$htmlBody
