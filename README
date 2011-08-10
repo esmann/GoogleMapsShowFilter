@@ -2,9 +2,10 @@ Simple splitscreen GSAK macro that shows the current filter on a google map
 
 for now it is VERY basic, it just shows a red balloon for each cache.
 
-TODO:
+TODO: (in no particular order)
 * add different icons for different cachetypes
 * add "bubble" with cache descriptions
 * enable scrollwheel zoom
-* limit number of shown caches.
-
+* center the map properly
+* make maxShow userdefinable*
+* when filter to large show the $maxShow nearest instead of the first $maxShow

@@ -9,8 +9,21 @@
 # Export=No
 # Offline=No
 #***************************************
+
+$maxShow = 200
+
 Goto Position=Top
-while not ($_eol)
+
+$counter = 0
+
+if $_Count < $maxShow
+	$maxShow = $_Count
+else
+	msgok msg="Filter contains $_Count caches only showing the first $maxShow"
+endif
+
+while $counter < $maxShow
+	$counter = $counter + 1
 	#do waypoint stuff
 	$htmlBody = $htmlBody + "var marker$d_CacheID = new GMarker(new GPoint(" + $d_Longitude + ", " + $d_Latitude + "));"
 	$htmlBody = $htmlBody + "map.addOverlay(marker$d_CacheId);"
